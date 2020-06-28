@@ -10,7 +10,6 @@ require('dotenv').config();
 
 console.log("[Env] ENV: ", process.env.ENV);
 console.log("[Env] BASE_URL: ", process.env.BASE_URL);
-console.log("[Env] AWS_KEY: ", process.env.AWS_KEY);
 
 require('../index').config();
 
