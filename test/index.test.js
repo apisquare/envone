@@ -146,4 +146,22 @@ describe("should configure environment variables", () => {
     expect(response.LOG_URL).is.equal("https://PROD-abc.PROD-service.log-man.com");
     getProcessEnvStub.restore();
   })
+
+  it("should handle the errors in loading .env.config", () => {
+    readFileSyncStub.restore(); // restore already wrapped function
+    readFileSyncStub = sinon.stub(fs, 'readFileSync').throws(new Error("Error"));
+
+    let response = envOne.config()
+    expect(response).haveOwnProperty("error");  
+    readFileSyncStub.restore();
+  })
+
+  it("should handle the errors in getting process Envs", () => {
+    getProcessEnvStub.restore(); // restore already wrapped function
+    getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").throws(new Error("Error"));
+
+    let response = envOne.config()
+    expect(response).haveOwnProperty("error");  
+    getProcessEnvStub.restore();
+  })
 });

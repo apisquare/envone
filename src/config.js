@@ -33,12 +33,7 @@ function getProcessEnv() {
  * @param {*} line 
  */
 function matcher(line) {
-  try {
-    return line.match(regex);
-  } catch (error) {
-    logger(`Error : ${error}`);
-    return { error };
-  }
+  return line.match(regex);
 }
 
 /**
