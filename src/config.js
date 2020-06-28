@@ -121,9 +121,8 @@ function config (options) {
 
   try {
     const parsedData = parseEnv(JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" })));
-    const replacedData = configReplace(parsedData);
 
-    return replacedData || {};
+    return parsedData || {};
   } catch (error) {
     logger(`Error : ${error}`);
     return { error };
