@@ -14,7 +14,6 @@ This project has an example project configured with custom configurations. To ru
 ```
 [Env] ENV:  DEV
 [Env] BASE_URL:  https://xyz.test.abcd.com
-[Env] AWS_KEY:  i983etwi983etw
 [Env] BFF_URL:  https://xyz.test.abcd.com/api/v1
 [Env] SALESFORCE_URL:  https://xyx-DEV.undefined-salesforce.com/v1/test
 [Env] AWS_ACCESS_KEY:  w5Dty3EaFi983etw
