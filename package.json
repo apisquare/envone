@@ -1,0 +1,61 @@
+{
+  "name": "envone",
+  "version": "0.1.0",
+  "description": "Loads environment variables through the custom configurations",
+  "main": "index.js",
+  "keywords": [
+    "env",
+    ".env",
+    "environment",
+    "variables",
+    "settings",
+    "node"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "author": "Suthagar Kailayapathy <suthagar23.dev@gmail.com>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/APISquare/envone"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "mocha --recursive",
+    "coverage": "nyc mocha --recursive",
+    "coverage-report": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "chai": "~4.2.0",
+    "eslint": "~6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "husky": "^3.1.0",
+    "lint-staged": "~9.5.0",
+    "mocha": "~7.2.0",
+    "nyc": "^15.1.0",
+    "sinon": "^7.5.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/APISquare/envone/issues"
+  },
+  "homepage": "https://github.com/APISquare/envone#readme",
+  "directories": {
+    "tests": "tests"
+  }
+}
