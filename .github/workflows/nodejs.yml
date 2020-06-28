@@ -1,0 +1,41 @@
+
+name: Node.js CI Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x]
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Setup Node.JS
+      uses: actions/setup-node@v1
+      with: 
+        node-version: ${{matrix.node-version}}
+    - name: Install yarn
+      run: npm install -g yarn
+    - name: Install packages
+      run: yarn
+    - name: Check lint issues
+      run: yarn lint
+    - name: Run tests
+      run: yarn test
+    - name: Run coverage
+      run: yarn coverage
+    - name: Install codecov package
+      run: npm install -g codecov
+    - name: Push report to CodeCov
+      run: yarn coverage-report -t ${{ secrets.CODECOV_TOKEN }}
+        
+    
+      
+      
