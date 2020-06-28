@@ -6,7 +6,13 @@ This project has an example project configured with custom configurations. To ru
 1. Clone this repository : `git clone https://github.com/APISquare/envone`
 2. Go inside the test-server folder : `cd envone/example`
 3. Install the required dependencies : `npm install` or `yarn`
-4. Start the server : `npm start` or `yarn start`
+4. Start the server : 
+```bash
+ # using npm
+ ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ yarn start npm start
+ # or using yarn
+ ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ yarn start yarn start
+```
 5. Go to [https://localhost:5000/status](https://localhost:5000/status) and see the console to get the loaded environment variables.
 
 ## Loaded Environment Variables

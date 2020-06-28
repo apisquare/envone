@@ -5,9 +5,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Configure dotEnv to load required envs
-require('dotenv').config();
-
 console.log("[Env] ENV: ", process.env.ENV);
 console.log("[Env] BASE_URL: ", process.env.BASE_URL);
 console.log("[Env] ANALYTICS_URL: ", process.env.ANALYTICS_URL);
