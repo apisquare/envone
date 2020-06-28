@@ -7,3 +7,7 @@ envone.png
 .nycrc
 .eslintrc.json
 .eslintignore
+coverage
+*.log
+.nyc_output
+coverage.lcov
