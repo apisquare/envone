@@ -12,7 +12,7 @@ console.log("[Env] ENV: ", process.env.ENV);
 console.log("[Env] BASE_URL: ", process.env.BASE_URL);
 console.log("[Env] ANALYTICS_URL: ", process.env.ANALYTICS_URL);
 
-require('../index').config({ debug: true });
+require('envone').config({ debug: true });
 
 console.log("[Updated Env] BFF_URL: ", process.env.BFF_URL);
 console.log("[Updated Env] SALESFORCE_URL: ", process.env.SALESFORCE_URL);

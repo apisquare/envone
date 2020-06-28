@@ -88,6 +88,11 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
+envone@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/envone/-/envone-0.1.0.tgz#b0ddfd41abb2db9bedfb51b303c758180845c69d"
+  integrity sha512-q2wIjWXBair/rSRGOrvC8b5zC7529eCTEXJ4w6PL5/XYjmyWImQQDiTPYJF9cJ+P66ahiB8B8W2mHVlV3YIeGg==
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
