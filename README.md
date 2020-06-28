@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="dotenv" align="right" />
 
-EnvOne is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Reduce your environment variables!</b>
+<b>EnvOne</b> is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Reduce your environment variables!</b>
 
 ![Node.js CI Build](https://github.com/APISquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
 [![NPM version](https://img.shields.io/npm/v/envone.svg)](https://www.npmjs.com/package/envone)
@@ -29,8 +29,8 @@ yarn add envone
    CONTACT_US_EMAIL (STAG): hello-stag@abcd.com
    CONTACT_US_EMAIL (PROD): hello-prod@abcd.com
   ```
-- Are you suffering to manage a lot of environment variables across your environments
-- Do you follow any unique patterns across your environments
+- Are you suffering to manage a lot of environment variables across your environments?
+- Do you follow any unique patterns across your environments?
   ```
   DEV: https://test-dev.application.abcd.com
   STAG: https://test-stag.application.abcd.com
@@ -40,7 +40,7 @@ yarn add envone
 
 ## Usage
 
-As early as possible in your application, require and configure envone.
+As early as possible in your application, require and configure <b>envone</b>.
 
 ```javascript
 require('envone').config()
