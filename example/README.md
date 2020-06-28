@@ -42,7 +42,7 @@ require('envone').config(); // to configure other environment variables using lo
 ```
 8. Go to [https://localhost:5000/status](https://localhost:5000/status) and see the console to get the loaded environment variables.
 
-## Loaded Environment Variables
+## Runtime Environment Variables
 
 ```
 [Env] ENV:  DEV
