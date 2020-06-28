@@ -16,7 +16,7 @@ This project has an example project configured with custom configurations. To ru
 5. Go to [https://localhost:5000/status](https://localhost:5000/status) and see the console to get the loaded environment variables.
 
 
-## Use EnvOne with DotEnv
+## Use EnvOne with Dotenv
 
 After step-3 in the above section,
 
