@@ -1,0 +1,16 @@
+{
+  "name": "envone-example-server",
+  "version": "0.1.0",
+  "description": "Examples",
+  "main": "index.js",
+  "author": "Suthagar Kailayapathy <suthagar23.dev@gmail.com>",
+  "contributors": [],
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.4",
+    "dotenv": "^8.2.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
