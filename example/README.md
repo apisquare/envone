@@ -9,11 +9,38 @@ This project has an example project configured with custom configurations. To ru
 4. Start the server : 
 ```bash
  # using npm
- ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ yarn start npm start
+ ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ npm start
  # or using yarn
- ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ yarn start yarn start
+ ENV=DEV BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ yarn start
 ```
 5. Go to [https://localhost:5000/status](https://localhost:5000/status) and see the console to get the loaded environment variables.
+
+
+## Use EnvOne with DotEnv
+
+After step-3 in the above section,
+
+4. Create `.env` file in your root directory with the following values,
+```
+ ENV=DEV
+ BASE_URL=https://xyz.test.abcd.com
+ ANALYTICS_URL=https://analytics.services.com/
+```
+5. Install `dotenv` to your project : `npm install dotenv` or `yarn add dotenv`
+6. Configure `dotenv` before configuring `envone` in your root file.
+```js
+require('dotenv').config(); // to load .env values
+require('envone').config(); // to configure other environment variables using loaded env values
+# ...
+```
+7. Start the server : 
+```bash
+ # using npm
+ npm start
+ # or using yarn
+ yarn start
+```
+8. Go to [https://localhost:5000/status](https://localhost:5000/status) and see the console to get the loaded environment variables.
 
 ## Loaded Environment Variables
 
