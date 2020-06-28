@@ -35,6 +35,7 @@ yarn add envone
   STAG: https://test-stag.application.abcd.com
   PROD: https://test-prod.application.abcd.com
   ```
+- You can commit this to your source control to reduce your management of non-secret environment variables.
 
 ## Usage
 
