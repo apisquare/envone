@@ -10,14 +10,15 @@ require('dotenv').config();
 
 console.log("[Env] ENV: ", process.env.ENV);
 console.log("[Env] BASE_URL: ", process.env.BASE_URL);
-
-require('../index').config();
-
-console.log("[Env] BFF_URL: ", process.env.BFF_URL);
-console.log("[Env] SALESFORCE_URL: ", process.env.SALESFORCE_URL);
-console.log("[Env] AWS_ACCESS_KEY: ", process.env.AWS_ACCESS_KEY);
-console.log("[Env] DB_CONNECTION_URL: ", process.env.DB_CONNECTION_URL);
 console.log("[Env] ANALYTICS_URL: ", process.env.ANALYTICS_URL);
+
+require('../index').config({ debug: true });
+
+console.log("[Updated Env] BFF_URL: ", process.env.BFF_URL);
+console.log("[Updated Env] SALESFORCE_URL: ", process.env.SALESFORCE_URL);
+console.log("[Updated Env] AWS_ACCESS_KEY: ", process.env.AWS_ACCESS_KEY);
+console.log("[Updated Env] DB_CONNECTION_URL: ", process.env.DB_CONNECTION_URL);
+console.log("[Updated Env] ANALYTICS_URL: ", process.env.ANALYTICS_URL);
 
 app.get('/hello', (req, res) =>
   res.send("Hello, Welcome to Express health test server"),

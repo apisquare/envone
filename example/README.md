@@ -14,9 +14,13 @@ This project has an example project configured with custom configurations. To ru
 ```
 [Env] ENV:  DEV
 [Env] BASE_URL:  https://xyz.test.abcd.com
-[Env] BFF_URL:  https://xyz.test.abcd.com/api/v1
-[Env] SALESFORCE_URL:  https://xyx-DEV.undefined-salesforce.com/v1/test
-[Env] AWS_ACCESS_KEY:  w5Dty3EaFi983etw
-[Env] DB_CONNECTION_URL:  https://DEV-service-xyz-DEV.xyx.DEV-mongo.com
-[Env] ANALYTICS_URL:  undefined
+[Env] ANALYTICS_URL:  https://analytics.services.com/
+
+[envone][DEBUG] Given "ANALYTICS_URL" is already pre-defined in "process.env" and can not be overwritten.
+
+[Updated Env] BFF_URL:  https://xyz.test.abcd.com/api/v1
+[Updated Env] SALESFORCE_URL:  https://DEV-salesforce.com/v1/test
+[Updated Env] AWS_ACCESS_KEY:  w5Dty3EaFi983etw
+[Updated Env] DB_CONNECTION_URL:  https://DEV-service-xyz-DEV.xyx.DEV-mongo.com
+[Updated Env] ANALYTICS_URL:  https://analytics.services.com/
 ```
