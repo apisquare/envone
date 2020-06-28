@@ -1,0 +1,9 @@
+.github/
+example/
+test/
+.npmignore
+envone.png
+.sonarcloud.properties
+.nycrc
+.eslintrc.json
+.eslintignore
