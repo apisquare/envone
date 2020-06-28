@@ -1,10 +1,12 @@
 # EnvOne
 
+<img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="dotenv" align="right" />
+
+EnvOne is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env`. "Reduce your environment variables!"
+
 ![Node.js CI Build](https://github.com/APISquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
 [![codecov](https://codecov.io/gh/APISquare/envone/branch/master/graph/badge.svg)](https://codecov.io/gh/APISquare/envone)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=APISquare_envone&metric=alert_status)](https://sonarcloud.io/dashboard?id=APISquare_envone)
-
-EnvOne is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env`. "Reduce your environment variables!"
 
 ## Install
 
