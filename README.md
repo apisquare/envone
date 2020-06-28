@@ -5,7 +5,9 @@
 EnvOne is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env`. "Reduce your environment variables!"
 
 ![Node.js CI Build](https://github.com/APISquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
+[![NPM version](https://img.shields.io/npm/v/envone.svg)](https://www.npmjs.com/package/envone)
 [![codecov](https://codecov.io/gh/APISquare/envone/branch/master/graph/badge.svg)](https://codecov.io/gh/APISquare/envone)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/envone)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=APISquare_envone&metric=alert_status)](https://sonarcloud.io/dashboard?id=APISquare_envone)
 
 ## Install
