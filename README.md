@@ -9,6 +9,7 @@ EnvOne is a zero-dependency module that loads dynamic environment configurations
 [![codecov](https://codecov.io/gh/APISquare/envone/branch/master/graph/badge.svg)](https://codecov.io/gh/APISquare/envone)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/envone)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=APISquare_envone&metric=alert_status)](https://sonarcloud.io/dashboard?id=APISquare_envone)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAPISquare%2Fenvone.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FAPISquare%2Fenvone?ref=badge_shield)
 
 ## Install
 
@@ -146,3 +147,5 @@ Add your fixes and development changes as pull requests to this [repository](htt
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAPISquare%2Fenvone.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FAPISquare%2Fenvone?ref=badge_large)
