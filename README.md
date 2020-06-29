@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="dotenv" align="right" />
 
-<b>EnvOne</b> is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Reduce your environment variables!</b>
+<b>EnvOne</b> is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Relief from messing with your environments!</b>
 
 ![Node.js CI Build](https://github.com/APISquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
 [![NPM version](https://img.shields.io/npm/v/envone.svg)](https://www.npmjs.com/package/envone)
