@@ -1,6 +1,6 @@
 {
   "name": "envone",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Loads environment variables through the custom configurations",
   "main": "index.js",
   "keywords": [
