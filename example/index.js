@@ -16,6 +16,7 @@ console.log("[Updated Env] SALESFORCE_URL: ", process.env.SALESFORCE_URL);
 console.log("[Updated Env] AWS_ACCESS_KEY: ", process.env.AWS_ACCESS_KEY);
 console.log("[Updated Env] DB_CONNECTION_URL: ", process.env.DB_CONNECTION_URL);
 console.log("[Updated Env] ANALYTICS_URL: ", process.env.ANALYTICS_URL);
+console.log("[Updated Env] CONTACT_US_EMAIL: ", process.env.CONTACT_US_EMAIL);
 
 app.get('/hello', (req, res) =>
   res.send("Hello, Welcome to Express health test server"),

@@ -1,5 +1,39 @@
 # EnvOne- Test Node.js Server
 
+## .env.config
+
+```json
+{
+  "BFF_URL": "{{BASE_URL}}/api/v1",
+  "SALESFORCE_URL":"https://{{ENV}}-salesforce.com/v1/test",
+  "AWS_ACCESS_KEY": {
+    "DEV": "w5Dty3EaFi983etw",
+    "STAG": "u7Awda72Sd2Wfaf",
+    "PROD": "{{AWS_KEY}}"
+  },
+  "AWS_ACCESS_SECRET": {
+    "DEV": "w5Dty3EaFi983etw",
+    "STAG": "{{AWS_SECRET}}",
+    "PROD": "{{AWS_SECRET}}"
+  },
+  "DB_CONNECTION_URL": "https://{{ENV}}-service-xyz-{{ENV}}.xyx.{{ENV}}-mongo.com",
+  "DB_CONNECTION_PASSWORD": {
+    "DEV": "w5Dty3EaFi983etw",
+    "STAG": "{{DB_PASSWORD}}",
+    "PROD": "{{DB_PASSWORD}}"
+  },
+  "ANALYTICS_URL": {
+    "DEV": "https://analytics.dev-services.com/",
+    "STAG": "https://analytics.stag-services.com/",
+    "PROD": "https://analytics.prod-services.com/"
+  },
+  "CONTACT_US_EMAIL": {
+   "DEFAULT": "hello-{{ENV}}@abcd.com",
+   "PROD": "hello@abcd.com"
+ }
+}
+```
+
 ## Run this server
 
 This project has an example project configured with custom configurations. To run that project and see the outputs follow these steps,
