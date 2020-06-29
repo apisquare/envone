@@ -164,4 +164,32 @@ describe("should configure environment variables", () => {
     expect(response).haveOwnProperty("error");  
     getProcessEnvStub.restore();
   })
+
+  it("should pick the DEFAULT for un-defined environment configurations", () => {
+    let response = envOne.config()
+    expect(response).haveOwnProperty("CONTACT_US_EMAIL");
+    expect(mockGetProcessEnv.ENV).is.equal("DEV")
+    expect(response.CONTACT_US_EMAIL).is.not.null;
+    expect(response.CONTACT_US_EMAIL).is.equal("hello-DEV@abcd.com");
+
+    mockGetProcessEnv = { ENV: "STAG" }
+    getProcessEnvStub.restore(); // restore already wrapped function
+    getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").returns(mockGetProcessEnv);
+    response = envOne.config()
+    expect(response).haveOwnProperty("CONTACT_US_EMAIL");
+    expect(mockGetProcessEnv.ENV).is.equal("STAG")
+    expect(response.CONTACT_US_EMAIL).is.not.null;
+    expect(response.CONTACT_US_EMAIL).is.equal("hello-STAG@abcd.com");
+
+    mockGetProcessEnv = { ENV: "PROD" }
+    getProcessEnvStub.restore(); // restore already wrapped function
+    getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").returns(mockGetProcessEnv);
+    response = envOne.config()
+    expect(response).haveOwnProperty("CONTACT_US_EMAIL");
+    expect(mockGetProcessEnv.ENV).is.equal("PROD")
+    expect(response.CONTACT_US_EMAIL).is.not.null;
+    expect(response.CONTACT_US_EMAIL).is.not.equal("hello-PROD@abcd.com");
+    expect(response.CONTACT_US_EMAIL).is.equal("hello@abcd.com");
+    getProcessEnvStub.restore();
+  })
 });

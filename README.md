@@ -100,7 +100,21 @@ Dynamic environment configurations will be loaded from `.env.config` file, and w
       }
     }
    ```
-3. Here, you have the flexible to override any environment variables through the direct environment variables. You can simply pass that variable during the application startup to override any values. For example:
+3. Use the `DEFAULT` to defined your environment variables which have same patterns across the environments. For example,
+    ```
+    CONTACT_US_EMAIL (DEV): hello-dev@abcd.com
+    CONTACT_US_EMAIL (STAG): hello-stag@abcd.com
+    CONTACT_US_EMAIL (PROD): hello@abcd.com
+    ```
+    Here, `DEV` and `STAG` environment variables have same pattern, and `PROD` differed from that pattern. So you can simply define,
+    ```json
+    { "CONTACT_US_EMAIL": {
+        "DEFAULT": "hello-{{ENV}}@abcd.com",
+        "PROD": "hello@abcd.com"
+      }
+    }
+    ```
+4. Here, you have the flexible to override any environment variables through the direct environment variables. You can simply pass that variable during the application startup to override any values. For example:
     ```json
     {
       "SERVER_URL": "{{BASE_URL}}/api/v1",

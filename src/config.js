@@ -73,7 +73,10 @@ function parseEnv(config) {
     const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV_1";
     Object.keys(config).forEach(function (key) {
       if (typeof config[key] === 'object') {
-        const nodeEnvValue = config[key][nodeEnv];
+        let nodeEnvValue = config[key][nodeEnv];
+        if (!nodeEnvValue) {
+          nodeEnvValue = config[key]["default"] || config[key]["DEFAULT"];
+        }
         config[key] = nodeEnvValue;
       }
 
