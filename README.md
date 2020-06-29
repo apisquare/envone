@@ -100,13 +100,13 @@ Dynamic environment configurations will be loaded from `.env.config` file, and w
       }
     }
    ```
-3. Use the `DEFAULT` to defined your environment variables which have same patterns across the environments. For example,
+3. Use the `DEFAULT` to defined your environment variables that have the same patterns across the environments. For example,
     ```
     CONTACT_US_EMAIL (DEV): hello-dev@abcd.com
     CONTACT_US_EMAIL (STAG): hello-stag@abcd.com
     CONTACT_US_EMAIL (PROD): hello@abcd.com
     ```
-    Here, `DEV` and `STAG` environment variables have same pattern, and `PROD` differed from that pattern. So you can simply define,
+    Here, `DEV` and `STAG` environment variables have the same pattern, and `PROD` differed from that pattern. So you can simply define,
     ```json
     { "CONTACT_US_EMAIL": {
         "DEFAULT": "hello-{{ENV}}@abcd.com",
