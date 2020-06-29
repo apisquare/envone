@@ -1,6 +1,6 @@
 # EnvOne
 
-<img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="dotenv" align="right" />
+<img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="envone" align="right" />
 
 <b>EnvOne</b> is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Relief from messing with your environments!</b>
 
@@ -36,7 +36,7 @@ yarn add envone
   STAG: https://test-stag.application.abcd.com
   PROD: https://test-prod.application.abcd.com
   ```
-- You can commit this to your source control to reduce your management of non-secret environment variables.
+- You can commit this to your version control to reduce your management of non-secret environment variables.
 
 ## Usage
 

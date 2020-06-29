@@ -3,6 +3,7 @@ example/
 test/
 .npmignore
 envone.png
+envone-flow.png
 .sonarcloud.properties
 .nycrc
 .eslintrc.json
