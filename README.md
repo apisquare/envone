@@ -27,7 +27,7 @@ yarn add envone
   ```
    CONTACT_US_EMAIL (DEV): hello-dev@abcd.com
    CONTACT_US_EMAIL (STAG): hello-stag@abcd.com
-   CONTACT_US_EMAIL (PROD): hello-prod@abcd.com
+   CONTACT_US_EMAIL (PROD): hello@abcd.com
   ```
 - Are you suffering to manage a lot of environment variables across your environments?
 - Do you follow any unique patterns across your environments?
