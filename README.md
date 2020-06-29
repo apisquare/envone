@@ -23,7 +23,7 @@ yarn add envone
 
 ## Why EnvOne?
 
-- Do you worry about non-secret environment variables across your environments?
+- Is it hard to handle your non-secret environment variables across your environments?
   ```
    CONTACT_US_EMAIL (DEV): hello-dev@abcd.com
    CONTACT_US_EMAIL (STAG): hello-stag@abcd.com
@@ -36,7 +36,7 @@ yarn add envone
   STAG: https://test-stag.application.abcd.com
   PROD: https://test-prod.application.abcd.com
   ```
-- You can commit this to your version control to reduce your management of non-secret environment variables.
+- Where do you keep your environment variables across your environments? You can commit <b>.env.config</b> to your version control to reduce your management of non-secret environment variables.
 
   <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
 
