@@ -54,7 +54,7 @@ Create a `.env.config` file in the root directory of your project. Add environme
   "CONTACT_US_EMAIL": {
     "DEV": "hello-dev@abcd.com",
     "STAG": "hello-stag@abcd.com",
-    "PROD": "hello-prod@abcd.com"
+    "PROD": "hello@abcd.com"
   },
  }
  ```
