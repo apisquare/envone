@@ -38,6 +38,8 @@ yarn add envone
   ```
 - You can commit this to your version control to reduce your management of non-secret environment variables.
 
+  <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
+
 ## Usage
 
 As early as possible in your application, require and configure <b>envone</b>.
