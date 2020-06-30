@@ -40,6 +40,19 @@ yarn add envone
 
   <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
 
+## Dotenv vs EnvOne
+
+[Dotenv](https://www.npmjs.com/package/dotenv) helps to load the environment variables from `.env` file from your root directory to `process.env`. Here,
+- You can't commit `.env` file to your source control as it might have secrets.
+- It might hard to manage different environment files across your different environments.
+
+<b>EnvOne</b> helps you to migrate the non-secret environment variables from `.env` to `.env.config`.
+- You can commit `.env.config` file to your source control as it doesn't have any secrets.
+- You don't want to manage multiple files, you can keep one `.env.config` for all of your environments.
+- You can easily remove `EnvOne` from your eco-system and pass the Env variables directly to the application. (As EnvOne also loads Env variables to `process.env`)
+- Keep your environment variables clean and manageable across multiple environments.
+- `.env.config` also might depend on some Env variables to replace the dynamic configurations. (You can use dotenv or you can directly pass those with application startup command)
+
 ## Usage
 
 As early as possible in your application, require and configure <b>envone</b>.
