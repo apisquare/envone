@@ -44,7 +44,7 @@ yarn add envone
 
 [Dotenv](https://www.npmjs.com/package/dotenv) helps to load the environment variables from `.env` file from your root directory to `process.env`. Here,
 - You can't commit `.env` file to your source control as it might have secrets.
-- It might hard to manage different environment files across your different environments.
+- It might be hard to manage different environment files across different environments.
 
 <img src="https://raw.githubusercontent.com/APISquare/envone/master/docs/envswithdotenv.png" alt="envone-flow" align="center" />
 
