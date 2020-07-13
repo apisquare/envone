@@ -225,14 +225,14 @@ describe("should properly pass the process environments", () => {
   })
 
   it("should able to mock the responses", () => {
-    let getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").returns(null);
+    let retrieveProcessEnv = sinon.stub(envOne, "retrieveProcessEnv").returns(null);
     expect(envOne.retrieveProcessEnv()).to.be.null;
-    getProcessEnvStub.restore(); // restore already wrapped function
+    retrieveProcessEnv.restore(); // restore already wrapped function
 
-    getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").returns({ ENV: "DEV" });
+    retrieveProcessEnv = sinon.stub(envOne, "retrieveProcessEnv").returns({ ENV: "DEV" });
     expect(envOne.retrieveProcessEnv()).not.to.be.null;
     expect(envOne.retrieveProcessEnv()).haveOwnProperty("ENV");
     expect(envOne.retrieveProcessEnv().ENV).is.equal("DEV")
-    getProcessEnvStub.restore(); // restore already wrapped function
+    retrieveProcessEnv.restore(); // restore already wrapped function
   })
 });
