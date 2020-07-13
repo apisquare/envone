@@ -17,13 +17,10 @@ function logger (message) {
 /**
  * Retrieve existing process environments, will be used to mock the process envs
  */
-function retrieveProcessEnv() {
+module.exports.retrieveProcessEnv = function () {
   return process.env;
-}
+};
 
-/**
- * Get existing process environments
- */
 function getProcessEnv() {
   return module.exports.retrieveProcessEnv();
 }
@@ -32,8 +29,12 @@ function getProcessEnv() {
  * Match the given line with pre-defined regex
  * @param {*} line 
  */
-function matcher(line) {
+module.exports.matcher = function (line) {
   return line.match(regex);
+};
+
+function getMatcher(line) {
+  return module.exports.matcher(line);
 }
 
 /**
@@ -41,13 +42,13 @@ function matcher(line) {
  * @param {*} envValue 
  * @param {*} key 
  */
-function configReplace (envValue, key) {
+module.exports.configReplace = function (envValue, key) {
   if (!envValue || typeof envValue != "string") {
     return envValue;
   }
 
   try {
-    const result = matcher(envValue);
+    const result = getMatcher(envValue);
     if (result) {
       result.forEach(node => {
         let processEnv = getProcessEnv()[node];
@@ -62,6 +63,10 @@ function configReplace (envValue, key) {
     logger(`Error : ${error}`);
     return { error };
   }
+};
+
+function getConfigReplace(envValue, key) {
+  return module.exports.configReplace(envValue, key);
 }
 
 /**
@@ -82,7 +87,7 @@ function parseEnv(config) {
 
       const nodeValue = config[key];
       if (nodeValue && typeof nodeValue === 'string') {
-        const replacedValue = configReplace(nodeValue, key);
+        const replacedValue = getConfigReplace(nodeValue, key);
         config[key] = replacedValue;
 
         if (!Object.prototype.hasOwnProperty.call(getProcessEnv(), key)) {
@@ -105,7 +110,7 @@ function parseEnv(config) {
 /**
  * Configure the environment variables
  */
-function config (options) {
+module.exports.config = function (options) {
   let configPath = path.resolve(process.cwd(), '.env.config');
   isDebugEnabled = false;
   if (options) {
@@ -125,7 +130,4 @@ function config (options) {
     logger(`Error : ${error}`);
     return { error };
   }
-}
-
-module.exports.config = config;
-module.exports.retrieveProcessEnv = retrieveProcessEnv;
+};

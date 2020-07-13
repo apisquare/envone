@@ -3,7 +3,7 @@ const expect = chai.expect;
 const fs = require('fs')
 const sinon = require('sinon')
 
-const envOne = require('../index');
+const envOne = require('../src/config');
 
 const envConfigRaw = fs.readFileSync("test/.env.config", { encoding: "utf8" })
 const envConfig = JSON.parse(envConfigRaw)
@@ -191,5 +191,48 @@ describe("should configure environment variables", () => {
     expect(response.CONTACT_US_EMAIL).is.not.equal("hello-PROD@abcd.com");
     expect(response.CONTACT_US_EMAIL).is.equal("hello@abcd.com");
     getProcessEnvStub.restore();
+  })
+
+  it("should have error object if regex matcher throws any errors", () => {
+    const matcherStub = sinon.stub(envOne, "matcher").throws(new Error("An error occurred"));
+    let response = envOne.config()
+    expect(response).haveOwnProperty("BFF_URL");
+    expect(response.BFF_URL).is.not.null;
+    expect(response.BFF_URL).haveOwnProperty("error");
+    expect(response.BFF_URL.error).is.not.null;
+    matcherStub.restore();
+  })
+
+  it("should configReplace return same value if the env value is null or not a string value", () => {
+    let response = envOne.configReplace(undefined, "BFF_URL")
+    expect(response).is.undefined;
+    response = envOne.configReplace(null, "BFF_URL")
+    expect(response).is.null;
+    response = envOne.configReplace("", "BFF_URL")
+    expect(response).is.equals("");
+    response = envOne.configReplace(true, "BFF_URL")
+    expect(response).is.true;
+
+    const inputValue = [];
+    response = envOne.configReplace(inputValue, "BFF_URL")
+    expect(response).is.equals(inputValue);
+  })
+});
+
+describe("should properly pass the process environments", () => {
+  it("should return process environments", () => {
+    expect(envOne.retrieveProcessEnv()).not.to.be.null;
+  })
+
+  it("should able to mock the responses", () => {
+    let retrieveProcessEnv = sinon.stub(envOne, "retrieveProcessEnv").returns(null);
+    expect(envOne.retrieveProcessEnv()).to.be.null;
+    retrieveProcessEnv.restore(); // restore already wrapped function
+
+    retrieveProcessEnv = sinon.stub(envOne, "retrieveProcessEnv").returns({ ENV: "DEV" });
+    expect(envOne.retrieveProcessEnv()).not.to.be.null;
+    expect(envOne.retrieveProcessEnv()).haveOwnProperty("ENV");
+    expect(envOne.retrieveProcessEnv().ENV).is.equal("DEV")
+    retrieveProcessEnv.restore(); // restore already wrapped function
   })
 });
