@@ -1,1 +1,1 @@
-module.exports = require('./src/config');
+module.exports.config = require('./src/config').config;
