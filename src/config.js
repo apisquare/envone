@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const regex = new RegExp("(?<=\\{\\{).+?(?=\\}\\})", "g");
 let isDebugEnabled = false;
+let userEnvironmentKeys = [];
 
 /**
  * Log messages in console
@@ -75,8 +76,10 @@ function getConfigReplace(envValue, key) {
  */
 function parseEnv(config) {
   try {
+    userEnvironmentKeys = [];
     const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV_1";
     Object.keys(config).forEach(function (key) {
+      userEnvironmentKeys.push(key);
       if (typeof config[key] === 'object') {
         let nodeEnvValue = config[key][nodeEnv];
         if (!nodeEnvValue) {
@@ -130,4 +133,11 @@ module.exports.config = function (options) {
     logger(`Error : ${error}`);
     return { error };
   }
+};
+
+/**
+ * Retrieve environment keys which was set by user
+ */
+module.exports.getUserEnvironmentKeys = function () {
+  return userEnvironmentKeys;
 };
