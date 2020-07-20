@@ -217,6 +217,13 @@ describe("should configure environment variables", () => {
     response = envOne.configReplace(inputValue, "BFF_URL")
     expect(response).is.equals(inputValue);
   })
+
+  it("should getUserEnvironmentKeys return environment keys which was set by the user", () => {
+    let response = envOne.getUserEnvironmentKeys()
+    expect(response).is.not.empty;
+    expect(response.length).is.equals(Object.keys(envConfig).length);
+    expect(Array.isArray(response)).is.true;
+  })
 });
 
 describe("should properly pass the process environments", () => {
