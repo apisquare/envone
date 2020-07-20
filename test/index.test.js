@@ -222,6 +222,7 @@ describe("should configure environment variables", () => {
     let response = envOne.getUserEnvironmentKeys()
     expect(response).is.not.empty;
     expect(response.length).is.equals(Object.keys(envConfig).length);
+    expect(Array.isArray(response)).is.true;
   })
 });
 
