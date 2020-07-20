@@ -98,6 +98,17 @@ function setContactUseEmail(emailAddress) {
 const emailRes = request(process.env.CONTACT_US_EMAIL)
 ```
 
+#### Usage of getUserEnvironmentKeys()
+Returns user defined environment variable keys as an array (based on `.env.config`).
+
+```js
+const envOne = require('envone');
+envOne.config();
+...
+const envKeys = envOne.getUserEnvironmentKeys(); 
+# envKeys = ['BFF_URL', 'DB_PASSWORD']
+```
+
 #### Example : [EnvOne- Test Node.js Server](https://github.com/APISquare/envone/tree/master/example)
 
 ## .env.config - Rules
