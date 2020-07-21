@@ -3,7 +3,7 @@ const path = require('path');
 const regex = new RegExp("(?<=\\{\\{).+?(?=\\}\\})", "g");
 let isDebugEnabled = false;
 let userEnvironmentKeys = [];
-let secretEnvironmentKeys = []
+let secretEnvironmentKeys = [];
 
 /**
  * Log messages in console
@@ -89,7 +89,7 @@ function parseEnv(config) {
         }
 
         if (config[key].isSecret === true) {
-          secretEnvironmentKeys.push(key)
+          secretEnvironmentKeys.push(key);
         }
 
         config[key] = nodeEnvValue;
