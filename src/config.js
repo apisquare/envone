@@ -136,13 +136,9 @@ module.exports.config = function (options) {
     const parsedData = parseEnv(JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" })));
 
     if (secretEnvironmentKeys.length > 0) {
-      return { 
-        ...parsedData,
-        SECRET_ENVIRONMENT_KEYS: [...secretEnvironmentKeys]
-      } || { SECRET_ENVIRONMENT_KEYS: [...secretEnvironmentKeys] };
-    } else {
-      return { ...parsedData } || {};
+      parsedData.SECRET_ENVIRONMENT_KEYS = Array.from(secretEnvironmentKeys);
     }
+    return parsedData;
   } catch (error) {
     logger(`Error : ${error}`);
     return { error };
