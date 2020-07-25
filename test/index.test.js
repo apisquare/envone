@@ -224,6 +224,30 @@ describe("should configure environment variables", () => {
     expect(response.length).is.equals(Object.keys(envConfig).length);
     expect(Array.isArray(response)).is.true;
   })
+
+  it("should expose secretEnvironmentKeys, if envConfig has any secrets", () => {
+    readFileSyncStub.restore();
+    envConfig.DB_CONNECTION_PASSWORD.isSecret = true;
+    readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify(envConfig))
+    const response = envOne.config()
+    expect(response).haveOwnProperty("SECRET_ENVIRONMENT_KEYS");
+    expect(Array.isArray(response.SECRET_ENVIRONMENT_KEYS)).is.true;
+    expect(response.SECRET_ENVIRONMENT_KEYS.length).is.equals(1);
+    expect(response.SECRET_ENVIRONMENT_KEYS).contains('DB_CONNECTION_PASSWORD')
+    readFileSyncStub.restore();
+  })
+
+  it("should not expose secretEnvironmentKeys, if envConfig doesn't have any secrets", () => {
+    let response = envOne.config()
+    expect(response).not.haveOwnProperty("SECRET_ENVIRONMENT_KEYS");
+
+    readFileSyncStub.restore();
+    envConfig.DB_CONNECTION_PASSWORD.isSecret = false;
+    readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify(envConfig))
+    response = envOne.config()
+    expect(response).not.haveOwnProperty("SECRET_ENVIRONMENT_KEYS");
+    readFileSyncStub.restore();
+  })
 });
 
 describe("should properly pass the process environments", () => {

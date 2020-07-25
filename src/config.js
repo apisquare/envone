@@ -3,6 +3,7 @@ const path = require('path');
 const regex = new RegExp("(?<=\\{\\{).+?(?=\\}\\})", "g");
 let isDebugEnabled = false;
 let userEnvironmentKeys = [];
+let secretEnvironmentKeys = [];
 
 /**
  * Log messages in console
@@ -77,6 +78,7 @@ function getConfigReplace(envValue, key) {
 function parseEnv(config) {
   try {
     userEnvironmentKeys = [];
+    secretEnvironmentKeys = [];
     const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV_1";
     Object.keys(config).forEach(function (key) {
       userEnvironmentKeys.push(key);
@@ -85,6 +87,11 @@ function parseEnv(config) {
         if (!nodeEnvValue) {
           nodeEnvValue = config[key]["default"] || config[key]["DEFAULT"];
         }
+
+        if (config[key].isSecret === true) {
+          secretEnvironmentKeys.push(key);
+        }
+
         config[key] = nodeEnvValue;
       }
 
@@ -128,7 +135,10 @@ module.exports.config = function (options) {
   try {
     const parsedData = parseEnv(JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" })));
 
-    return parsedData || {};
+    if (secretEnvironmentKeys.length > 0) {
+      parsedData.SECRET_ENVIRONMENT_KEYS = Array.from(secretEnvironmentKeys);
+    }
+    return parsedData;
   } catch (error) {
     logger(`Error : ${error}`);
     return { error };

@@ -160,6 +160,27 @@ Dynamic environment configurations will be loaded from `.env.config` file, and w
     SERVER_URL=https://test.abc.com/rest ACCESS_KEY=pWs13dSwerF node index.js
     ```
     Here, the configuration in `.env.config` will be ignored, and `SERVER_URL` and `ACCESS_KEY` will be picked from the startup environment variables.
+5. Define your secret environment variables with `isSecret` field. 
+   ```json
+   {
+      "DB_PASSWORD": {
+        "DEV": "w5Dty3EaFi983ew",
+        "DEFAULT": "{{DB_PASSWORD}}",
+        "isSecret": true,
+      },
+      "AWS_SECRET": {
+        "DEV": "asfSAF@afawr21FA",
+        "DEFAULT": "{{AWS_SECRET}}",
+        "isSecret": true,
+      }
+    }
+
+   ```
+   This will help you to get all the secret environment keys as an array from the envOne config output,
+   ```js
+   const envData = require('envone').config();
+   // Output => envData.SECRET_ENVIRONMENT_KEYS = ["DB_PASSWORD", "AWS_SECRET"]
+   ```
 
   
 ### Options
