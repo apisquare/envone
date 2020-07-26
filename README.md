@@ -109,7 +109,7 @@ const envKeys = envOne.getUserEnvironmentKeys();
 // envKeys = ['BFF_URL', 'DB_PASSWORD']
 ```
 
-#### Example : [EnvOne- Test Node.js Server](https://github.com/APISquare/envone/tree/master/example)
+#### Check here for how to use this : [EnvOne- Example Node.js Server](https://github.com/APISquare/envone/tree/master/example)
 
 ## .env.config - Rules
 
