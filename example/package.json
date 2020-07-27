@@ -11,6 +11,7 @@
     "envone": "0.3.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:env": "ENV=DEV ENV_TEXT=dev BASE_URL=https://xyz.test.abcd.com ANALYTICS_URL=https://analytics.services.com/ node index.js"
   }
 }

@@ -110,7 +110,7 @@ function parseEnv(config) {
         logger(`Can't find a valid environment value of "${key}" for ${nodeEnv} environment.`);
       }
     });
-    return config;
+    return { parsed: config };
   } catch (error) {
     logger(`Error : ${error}`);
     return { error };
