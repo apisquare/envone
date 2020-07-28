@@ -1,12 +1,12 @@
 # EnvOne
 
-<img src="https://raw.githubusercontent.com/APISquare/envone/master/envone.png" alt="envone" align="right" />
+<img src="https://raw.githubusercontent.com/apisquare/envone/master/envone.png" alt="envone" align="right" />
 
 <b>EnvOne</b> is a zero-dependency module that loads dynamic environment configurations from a `.env.config` file, and process it as environment variables into `process.env` - <b>Relief from messing with your environments!</b>
 
-![Node.js CI Build](https://github.com/APISquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
+![Node.js CI Build](https://github.com/apisquare/envone/workflows/Node.js%20CI%20Build/badge.svg)
 [![NPM version](https://img.shields.io/npm/v/envone.svg)](https://www.npmjs.com/package/envone)
-[![codecov](https://codecov.io/gh/APISquare/envone/branch/master/graph/badge.svg)](https://codecov.io/gh/APISquare/envone)
+[![codecov](https://codecov.io/gh/apisquare/envone/branch/master/graph/badge.svg)](https://codecov.io/gh/apisquare/envone)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/envone)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=APISquare_envone&metric=alert_status)](https://sonarcloud.io/dashboard?id=APISquare_envone)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAPISquare%2Fenvone.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FAPISquare%2Fenvone?ref=badge_shield)
@@ -73,7 +73,7 @@ const envKeys = envOne.getUserEnvironmentKeys();
 // envKeys = ['BFF_URL', 'DB_PASSWORD']
 ```
 
-#### Check here for how to use this : [EnvOne- Example Node.js Server](https://github.com/APISquare/envone/tree/master/example)
+#### Check here for how to use this : [EnvOne- Example Node.js Server](https://github.com/apisquare/envone/tree/master/example)
 
 ## .env.config - Rules
 
@@ -186,7 +186,7 @@ require('envone').config({ debug: true })
   ```
 - Where do you keep your environment variables across your environments? You can commit <b>.env.config</b> to your version control to reduce your management of non-secret environment variables.
 
-  <img src="https://raw.githubusercontent.com/APISquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
+  <img src="https://raw.githubusercontent.com/apisquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
 
 ## Dotenv vs EnvOne
 
@@ -194,7 +194,7 @@ require('envone').config({ debug: true })
 - You can't commit `.env` file to your source control as it might have secrets.
 - It might be hard to manage different environment files across different environments.
 
-<img src="https://raw.githubusercontent.com/APISquare/envone/master/docs/envswithdotenv.png" alt="envone-flow" align="center" />
+<img src="https://raw.githubusercontent.com/apisquare/envone/master/docs/envswithdotenv.png" alt="envone-flow" align="center" />
 
 <b>EnvOne</b> helps you to migrate the non-secret environment variables from `.env` to `.env.config`.
 - You can commit `.env.config` file to your source control as it doesn't have any secrets.
@@ -203,14 +203,14 @@ require('envone').config({ debug: true })
 - Keep your environment variables clean and manageable across multiple environments.
 - `.env.config` also might depend on some Env variables to replace the dynamic configurations. (You can use dotenv or you can directly pass those with application startup command)
 
-<img src="https://raw.githubusercontent.com/APISquare/envone/master/docs/envswithenvone.png" alt="envone-flow" align="center" />
+<img src="https://raw.githubusercontent.com/apisquare/envone/master/docs/envswithenvone.png" alt="envone-flow" align="center" />
 
 
 ## Contributions
 
-You can add any suggestions/feature requirements/bugs to the Github issues page : [https://github.com/APISquare/envone/issues](https://github.com/APISquare/envone/issues)
+You can add any suggestions/feature requirements/bugs to the Github issues page : [https://github.com/apisquare/envone/issues](https://github.com/apisquare/envone/issues)
 
-Add your fixes and development changes as pull requests to this [repository](https://github.com/APISquare/envone/pulls).
+Add your fixes and development changes as pull requests to this [repository](https://github.com/apisquare/envone/pulls).
 
 
 ## License

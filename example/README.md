@@ -39,7 +39,7 @@
 ## Run this server
 
 This project has an example project configured with custom configurations. To run that project and see the outputs follow these steps,
-1. Clone this repository : `git clone https://github.com/APISquare/envone`
+1. Clone this repository : `git clone https://github.com/apisquare/envone`
 2. Go inside the test-server folder : `cd envone/example`
 3. Install the required dependencies : `npm install` or `yarn`
 4. Start the server : 
