@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Examples",
   "main": "index.js",
+  "private": true,
   "author": "Suthagar Kailayapathy <suthagar23.dev@gmail.com>",
   "contributors": [],
   "license": "MIT",
