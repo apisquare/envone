@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const RequiredEnvMissingError = require('./RequiredEnvMissingError');
 const regex = new RegExp("(?<=\\{\\{).+?(?=\\}\\})", "g");
 let isDebugEnabled = false;
 let userEnvironmentKeys = [];
@@ -45,7 +46,7 @@ function getMatcher(line) {
  * @param {*} envValue 
  * @param {*} key 
  */
-module.exports.configReplace = function (envValue, key) {
+module.exports.configReplace = function (envValue, key, isRequiredKey = false) {
   if (!envValue || typeof envValue != "string") {
     return envValue;
   }
@@ -55,6 +56,9 @@ module.exports.configReplace = function (envValue, key) {
     if (result) {
       result.forEach(node => {
         let processEnv = getProcessEnv()[node];
+        if (isRequiredKey && !processEnv) {
+          throw new RequiredEnvMissingError(`Required environment key "${node}" is missing to parse "${key}" value. Please provide the required environment keys to start the server. \n`, key);
+        }
         if (!processEnv) {
           logger(`Can't find environment value for "${node}". Invalid configuration found for "${key}".`);
         } else {
@@ -65,13 +69,16 @@ module.exports.configReplace = function (envValue, key) {
     }
     return envValue;
   } catch (error) {
+    if (error.isRequiredEnvMissingError) {
+      throw error;
+    }
     logger(`Error : ${error}`);
-    return { error };
+    return { error }; 
   }
 };
 
-function getConfigReplace(envValue, key) {
-  return module.exports.configReplace(envValue, key);
+function getConfigReplace(envValue, key, isRequiredKey) {
+  return module.exports.configReplace(envValue, key, isRequiredKey);
 }
 
 /**
@@ -84,6 +91,7 @@ function parseEnv(config) {
     secretEnvironmentKeys = [];
     const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV";
     Object.keys(config).forEach(function (key) {
+      let isRequiredKey = false;
       userEnvironmentKeys.push(key);
       if (typeof config[key] === 'object') {
         let nodeEnvValue = config[key][nodeEnv];
@@ -94,13 +102,13 @@ function parseEnv(config) {
         if (config[key].isSecret === true) {
           secretEnvironmentKeys.push(key);
         }
-
+        isRequiredKey = config[key].isRequired || false;
         config[key] = nodeEnvValue;
       }
 
       const nodeValue = config[key];
       if (nodeValue && typeof nodeValue === 'string') {
-        const replacedValue = getConfigReplace(nodeValue, key);
+        const replacedValue = getConfigReplace(nodeValue, key, isRequiredKey);
         config[key] = replacedValue;
 
         if (!Object.prototype.hasOwnProperty.call(getProcessEnv(), key)) {
@@ -116,6 +124,9 @@ function parseEnv(config) {
     });
     return { parsed: config };
   } catch (error) {
+    if (error.isRequiredEnvMissingError) {
+      throw error;
+    }
     logger(`Error : ${error}`);
     return { error };
   }
@@ -147,6 +158,9 @@ module.exports.config = function (options) {
     }
     return parsedData;
   } catch (error) {
+    if (error.isRequiredEnvMissingError) {
+      throw error;
+    }
     logger(`Error : ${error}`);
     return { error };
   }
