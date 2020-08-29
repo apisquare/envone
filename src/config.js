@@ -4,6 +4,7 @@ const regex = new RegExp("(?<=\\{\\{).+?(?=\\}\\})", "g");
 let isDebugEnabled = false;
 let userEnvironmentKeys = [];
 let secretEnvironmentKeys = [];
+let providedEnvironmentConfigs = {};
 
 /**
  * Log messages in console
@@ -56,6 +57,8 @@ module.exports.configReplace = function (envValue, key) {
         let processEnv = getProcessEnv()[node];
         if (!processEnv) {
           logger(`Can't find environment value for "${node}". Invalid configuration found for "${key}".`);
+        } else {
+          providedEnvironmentConfigs[node] = processEnv;
         }
         envValue = envValue.replace("{{" + node + "}}", processEnv);
       });
@@ -79,7 +82,7 @@ function parseEnv(config) {
   try {
     userEnvironmentKeys = [];
     secretEnvironmentKeys = [];
-    const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV_1";
+    const nodeEnv = getProcessEnv()["ENV"] || getProcessEnv()["NODE_ENV"] || "DEV";
     Object.keys(config).forEach(function (key) {
       userEnvironmentKeys.push(key);
       if (typeof config[key] === 'object') {
@@ -135,6 +138,9 @@ module.exports.config = function (options) {
   try {
     const parsedData = parseEnv(JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" })));
 
+    if (Object.keys(providedEnvironmentConfigs).length > 0) {
+      parsedData.provided = providedEnvironmentConfigs;
+    }
     if (secretEnvironmentKeys.length > 0) {
       parsedData.SECRET_ENVIRONMENT_KEYS = Array.from(secretEnvironmentKeys);
     }
