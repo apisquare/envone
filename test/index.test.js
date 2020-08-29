@@ -4,6 +4,7 @@ const fs = require('fs')
 const sinon = require('sinon')
 
 const envOne = require('../src/config');
+const RequiredEnvMissingError = require('../src/RequiredEnvMissingError');
 
 const envConfigRaw = fs.readFileSync("test/.env.config", { encoding: "utf8" })
 const envConfig = JSON.parse(envConfigRaw)
@@ -249,6 +250,25 @@ describe("should configure environment variables", () => {
     response = envOne.config()
     expect(response.parsed).not.haveOwnProperty("SECRET_ENVIRONMENT_KEYS");
     readFileSyncStub.restore();
+  })
+
+  it("should throw error if any required environment key is missing", () => {
+    envConfig.APP_SECRET.isRequired = true;
+    readFileSyncStub.restore();
+    readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify(envConfig))
+    expect(function() { envOne.config() }).to.throws(RequiredEnvMissingError);
+  })
+
+  it("should not throw error when required environment key is provided", () => {
+    envConfig.APP_SECRET.isRequired = true;
+    readFileSyncStub.restore();
+    readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify(envConfig))
+    expect(function() { envOne.config() }).to.throws(RequiredEnvMissingError);
+
+    mockGetProcessEnv = { APP_SECRET_V_1_9: "123" }
+    getProcessEnvStub.restore(); // restore already wrapped function
+    getProcessEnvStub = sinon.stub(envOne, "retrieveProcessEnv").returns(mockGetProcessEnv);
+    expect(function() { envOne.config() }).not.to.throws(RequiredEnvMissingError);
   })
 });
 
