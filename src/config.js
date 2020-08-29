@@ -110,6 +110,7 @@ function parseEnv(config) {
         }
 
       } else {
+        /* istanbul ignore next */
         logger(`Can't find a valid environment value of "${key}" for ${nodeEnv} environment.`);
       }
     });
