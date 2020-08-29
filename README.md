@@ -11,6 +11,17 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=APISquare_envone&metric=alert_status)](https://sonarcloud.io/dashboard?id=APISquare_envone)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAPISquare%2Fenvone.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FAPISquare%2Fenvone?ref=badge_shield)
 
+## Table of contents
+
+1. [Install](#Install)
+2. [Usage](#Usage)
+3. [.env.config - Rules](#.env.config---Rules)
+4. [Options](#Options)
+5. [Why EnvOne?](#Why-EnvOne?)
+6. [Dotenv vs EnvOne](#Dotenv-vs-EnvOne)
+7. [Contributions](#Contributions)
+9. [License](#License)
+
 ## Install
 
 ```bash
@@ -145,6 +156,18 @@ Dynamic environment configurations will be loaded from `.env.config` file, and w
    const envData = require('envone').config();
    // Output => envData.SECRET_ENVIRONMENT_KEYS = ["DB_PASSWORD", "AWS_SECRET"]
    ```
+6. Add `isRequired` attribute to indicate the required environment keys. EnvOne prevents from starting the server without these required environment keys.
+    ```json
+    {
+        "AWS_SECRET": {
+          "DEV": "asfSAF@afawr21FA",
+          "DEFAULT": "{{AWS_SECRET}}",
+          "isSecret": true,
+          "isRequired" : true
+        }
+      }
+
+    ```
 
 ### Options
 
@@ -184,6 +207,7 @@ require('envone').config({ debug: true })
   STAG: https://test-stag.application.abcd.com
   PROD: https://test-prod.application.abcd.com
   ```
+- Manage your required environment keys and secret environments keys easily.
 - Where do you keep your environment variables across your environments? You can commit <b>.env.config</b> to your version control to reduce your management of non-secret environment variables.
 
   <img src="https://raw.githubusercontent.com/apisquare/envone/master/envone-flow.png" alt="envone-flow" align="center" />
