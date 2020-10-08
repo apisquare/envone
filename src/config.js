@@ -133,6 +133,14 @@ function parseEnv(config) {
 }
 
 /**
+ * Parse the JSON content to remove comments
+ * @param {*} content
+ */
+function parseReadFile(content) {
+  return content.replace(/^\s*\/\/.*$\n/gm, '')
+}
+
+/**
  * Configure the environment variables
  */
 module.exports.config = function (options) {
@@ -148,7 +156,7 @@ module.exports.config = function (options) {
   }
 
   try {
-    const parsedData = parseEnv(JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" })));
+    const parsedData = parseEnv(JSON.parse(parseReadFile(fs.readFileSync(configPath, { encoding: "utf8" }))));
 
     if (Object.keys(providedEnvironmentConfigs).length > 0) {
       parsedData.provided = providedEnvironmentConfigs;
